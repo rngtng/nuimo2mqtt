@@ -3,6 +3,9 @@ build () {
 }
 
 run () {
+  docker run  --rm -it --privileged --cap-add=ALL --net=host nuimo:python bash
+}
+run3 () {
   docker run -v /var/run/dbus:/var/run/dbus  --rm -it --privileged --cap-add=ALL --net=host nuimo:python bash
 }
 
