@@ -9,5 +9,7 @@ sudo /usr/syno/sbin/synoservicectl --stop bluetoothd
 ps ax | grep blue
 ```
 - `bluetoothd -n` -> move background
+- `nuimoctl --connect c5:e4:24:fb:9f:f2`
+- `echo "power on" | bluetoothctl`
 
 
