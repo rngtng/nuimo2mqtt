@@ -5,6 +5,9 @@ WORKDIR /app
 
 # RUN git clone https://github.com/pryomoax/rocket-nuimo-node.git
 # RUN cd rocket-nuimo-node && yarn install
-# RUN yarn add rocket-nuimo
 
+RUN yarn add rocket-nuimo
+RUN yarn add mqtt
+
+COPY src .
 COPY README.md .
