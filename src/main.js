@@ -1,7 +1,11 @@
 'use strict'
 
 var mqtt = require('mqtt')
-var client = mqtt.connect('mqtt://localhost');
+var client = mqtt.connect('mqtt://megatonne.fritz.box', {
+  username: 'my_user',
+  password: 'my_password'
+});
+
 
 // client.subscribe('presence')
 // client.publish('presence', 'bin hier')
@@ -22,5 +26,7 @@ client.on('connect', function () {
 client.on('message', function (topic, message) {
   // message is Buffer
   console.log(message.toString())
-  client.end()
+  if (message.toString() == 'end') {
+    client.end()
+  }
 })
