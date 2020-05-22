@@ -35,11 +35,11 @@ async function main() {
         console.log('Connected to Nuimo Control')
 
         device.on('selectDown', () => {
-          client.publish('presence', 'Display button presses')
           console.log('DEVICE INFO:')
           console.log(`ID:      ${device.id}`)
           console.log(`RSSI:    ${device.rssi}`)
           console.log(`BATTERY: ${device.batteryLevel}`)
+          client.publish('presence', `BATTERY: ${device.batteryLevel}`)
         })
 
         device.on('selectUp', () => {

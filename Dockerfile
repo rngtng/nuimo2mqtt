@@ -1,6 +1,7 @@
 FROM node:14
 
 RUN mkdir /app
+RUN mkdir /app/dist
 WORKDIR /app
 
 # RUN git clone https://github.com/pryomoax/rocket-nuimo-node.git
@@ -21,6 +22,7 @@ RUN yarn add rocket-nuimo
 RUN yarn add mqtt
 
 COPY src src
-COPY README.md .
+COPY .eslintrc.js .
+COPY tsconfig.json .
 
 RUN tsc src/index.ts
