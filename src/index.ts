@@ -6,6 +6,10 @@ var client = mqtt.connect('mqtt://megatonne.fritz.box', {
   password: 'my_password'
 });
 
+client.on('connect', function () {
+  console.log('Connected to MQTT')
+})
+
 // Device connection manager
 const manager = DeviceDiscoveryManager.defaultManager
 
@@ -30,22 +34,13 @@ async function main() {
     if (await device.connect()) {
         console.log('Connected to Nuimo Control')
 
-        client.on('connect', function () {
-          console.log('Hi')
-          client.subscribe('presence', function (err) {
-            if (!err) {
-              client.publish('presence', 'Hello mqtt')
-            }
-          })
+        device.on('selectDown', () => {
+          client.publish('presence', 'Display button presses')
         })
 
-        // client.on('message', function (topic, message) {
-        //   // message is Buffer
-        //   console.log(message.toString())
-        //   if (message.toString() == 'end') {
-
-        //   }
-        // })
+        device.on('selectUp', () => {
+          client.publish('presence', 'Display button released')
+        })
 
         // If the device gets disconnected, exit the app
         device.on('disconnect', () => {
