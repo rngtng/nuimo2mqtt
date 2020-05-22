@@ -22,3 +22,5 @@ RUN yarn add mqtt
 
 COPY src src
 COPY README.md .
+
+RUN tsc src/index.ts

@@ -36,10 +36,15 @@ async function main() {
 
         device.on('selectDown', () => {
           client.publish('presence', 'Display button presses')
+          console.log('DEVICE INFO:')
+          console.log(`ID:      ${device.id}`)
+          console.log(`RSSI:    ${device.rssi}`)
+          console.log(`BATTERY: ${device.batteryLevel}`)
         })
 
         device.on('selectUp', () => {
           client.publish('presence', 'Display button released')
+
         })
 
         // If the device gets disconnected, exit the app
