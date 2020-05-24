@@ -11,3 +11,9 @@ dev2:
 
 mega:
 	sudo docker run --rm  -it $IMAGE_TAG bash
+
+deploy:
+	git add .
+	git commit -m "next"
+	git push
+	ssh tobi@megatonne.fritz.box -p 223 "cd ~/nuimo2mqtt && git pull"
