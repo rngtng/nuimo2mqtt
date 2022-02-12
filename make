@@ -5,7 +5,7 @@ build () {
 }
 
 run () {
-  sudo docker run --rm -v $$PWD/src:/app/src -it --net=host $IMAGE_TAG bash
+  sudo docker run --rm -v $PWD/src:/app/src -it --net=host $IMAGE_TAG bash
 }
 
 $1
